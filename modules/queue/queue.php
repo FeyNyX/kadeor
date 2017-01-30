@@ -48,12 +48,6 @@ class Queue extends Module
 
     public function hookDisplayRightColumnProduct($params)
     {
-        $this->context->smarty->assign(
-            array(
-                'queue_name' => Configuration::get('QUEUE'),
-                'queue_link' => $this->context->link->getModuleLink('queue', 'display')
-            )
-        );
         return $this->display(__FILE__, 'queue.tpl');
     }
 
@@ -62,6 +56,8 @@ class Queue extends Module
      * - wysłać zapytanie do bazy poprzez przesłanie danych z formularza do akcji kontrolera odpowiedzialnej za zapisanie ich w bazie (AJAXem)
      * - po otrzymaniu pozytywnej odpowiedzi odpytać bazę (analogicznie jak wyżej) o inne wpisy (count ilości wpisów dotyczących id tego produktu) AJAXem
      * - po odebraniu odpowiedzi wyświetlić JS'em komunikat o miejscu w kolejce
+     *
+     * Do wykorzystania wiedza z http://doc.prestashop.com/display/PS16/Accessing+the+database
      */
 
     /**
